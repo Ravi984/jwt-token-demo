@@ -1,0 +1,64 @@
+#%RAML 1.0
+title: jwt-token-api
+
+traits:
+  jwt:
+    headers:
+      Authorization: 
+        type: string
+        example: Bearer <token>
+
+/students:
+   post:
+     is: [jwt]
+     queryParameters:
+       studentId:
+         type: string
+     body:
+       application/json:
+         example:
+           {
+            "stdFname":"suresh",
+            "stdLname":"kumar",
+            "stdAge":"16",
+            "stdClass":"10",
+           }
+
+     responses:
+       201:
+         body:
+           application/json:
+             example:
+               {
+                "studentid":"S123",
+                "stdFname":"suresh",
+                "stdLname":"kumar",
+                "stdAge":"16",
+                "stdClass":"10",
+                "section":"B",
+                "address": "#178, marathalli, bangalore,kanataka - 560066"
+                }       
+           
+/getStudentDetails:
+  get:
+    is: [jwt]
+    queryParameters:
+      studentid?:
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "studentid":"S123",
+                "stdFname":"suresh",
+                "stdLname":"kumar",
+                "stdAge":"16",
+                "stdClass":"10",
+                "section":"B",
+                "address": "#178, marathalli, bangalore,kanataka - 560066"
+                }
+            
+      
+
