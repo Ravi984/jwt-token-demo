@@ -152,7 +152,7 @@ output application/json
 ---
 {
   studentid: "S123",
-  stdFname: "suresh",
+  stdFname: "suresh12",
   stdLname: "kumar",
   stdAge: "16",
   stdClass: "10",
